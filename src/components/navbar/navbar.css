@@ -1,0 +1,49 @@
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 0.5em;
+  padding: 0.5em;
+  /* will-change: filter;
+  transition: filter 300ms; */
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.navbarItems {
+  list-style: none;
+  display: flex;
+  justify-content: right;
+}
+.navbarItems li {
+  margin-right: 2rem;
+}
+.navbarItems a {
+  color: #213547;
+}
+.mobileMenu {
+  display: none;
+}
+.mobileMenuList {
+  position: absolute;
+  top: 20;
+  left: 0;
+  right: 0;
+  background-color: blue;
+  color: white;
+}
+.mobileMenuList ul {
+  list-style: none;
+}
+
+@media screen and (max-width: 500px) {
+  .navbarItems {
+    display: none;
+  }
+  .mobileMenu {
+    display: block;
+  }
+}
