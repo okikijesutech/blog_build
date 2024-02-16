@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaBars, FaXmark } from "react-icons/fa6";
 import "./navbar.css";
 
 const Navbar = () => {
@@ -36,11 +37,11 @@ const Navbar = () => {
       <div className='mobileMenu'>
         {toggleMobile ? (
           <button type='button' onClick={handleMenu}>
-            close
+            <FaXmark size={24} />
           </button>
         ) : (
           <button type='button' onClick={handleMenu}>
-            menu
+            <FaBars size={24} />
           </button>
         )}
         {toggleMobile && (
