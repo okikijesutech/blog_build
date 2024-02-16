@@ -1,0 +1,43 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+}
+
+.carousel-images img {
+  width: 100%;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.carousel-images img.active {
+  transform: translateX(0);
+  display: block;
+}
+
+.carousel-images img.inactive {
+  display: none;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.carousel-control.prev {
+  left: 10px;
+  z-index: 1;
+}
+
+.carousel-control.next {
+  right: 10px;
+}

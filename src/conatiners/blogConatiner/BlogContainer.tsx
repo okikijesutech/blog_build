@@ -26,7 +26,7 @@ const blogs = [
 
 const BlogContainer = () => {
   return (
-    <div>
+    <div className='blogContainer'>
       {blogs.map((blog) => (
         <Blog key={blog.id} />
       ))}
