@@ -1,0 +1,29 @@
+.blog {
+  width: 400px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.blog-img {
+  width: 400px;
+  height: 231px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin-bottom: 0;
+}
+
+.blog-img img {
+  width: 400px;
+  height: 231px;
+}
+
+.blog-info {
+  margin-top: 0;
+  background-color: blue;
+  color: white;
+  padding: 5px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}

@@ -1,14 +1,18 @@
-// interface Blog {
-//     title: string
-// }
+import "./blog.css";
+interface Blog {
+  title: string;
+  img: String;
+}
 
-const Blog = () => {
+const Blog = ({ title, img }) => {
   return (
-    <div>
-      <img src='' alt='' />
-      <div>
+    <div className='blog'>
+      <div className='blog-img'>
+        <img src={img} alt={img} />
+      </div>
+      <div className='blog-info'>
         <div>
-          <h3>Title</h3>
+          <h3>{title}</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Distinctio, et?...

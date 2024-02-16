@@ -1,3 +1,5 @@
 .blogContainer {
   display: flex;
+  padding: 5% 10%;
+  flex-wrap: wrap;
 }

@@ -1,0 +1,22 @@
+.about > h3 {
+  margin-left: 120px;
+  font-size: 60px;
+  padding-left: 30px;
+}
+.aboutContent {
+  margin-left: 150px;
+  margin-right: 150px;
+  display: flex;
+}
+.aboutContentBody {
+  flex: 9;
+}
+.aboutInfo {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 789px) {
+  .aboutContent {
+    flex-direction: column;
+  }
+}
