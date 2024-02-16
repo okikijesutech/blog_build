@@ -1,10 +1,11 @@
+import React from "react";
 import "./blog.css";
-interface Blog {
+interface Blogprops {
   title: string;
-  img: String;
+  img: string;
 }
 
-const Blog = ({ title, img }) => {
+const Blog: React.FC<Blogprops> = ({ title, img }) => {
   return (
     <div className='blog'>
       <div className='blog-img'>
