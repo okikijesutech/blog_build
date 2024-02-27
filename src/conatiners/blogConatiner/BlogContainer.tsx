@@ -1,38 +1,27 @@
 import "./blogContainer.css";
 import Blog from "../../components/blog/Blog";
-import Blog1 from "../../assets/blog1.png";
-import Blog2 from "../../assets/blog2.png";
-import Blog3 from "../../assets/blog3.png";
-import Blog4 from "../../assets/blog4.png";
-
-const blogs = [
-  {
-    title: "Hello world",
-    id: "1",
-    img: Blog1,
-  },
-  {
-    title: "Hello Nigeria",
-    id: "2",
-    img: Blog2,
-  },
-  {
-    title: "Hello America",
-    id: "3",
-    img: Blog3,
-  },
-  {
-    title: "Hello Signapore",
-    id: "4",
-    img: Blog4,
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const BlogContainer = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/post", {});
+        setBlogs(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchBlog();
+  }, []);
+
   return (
     <div className='blogContainer'>
       {blogs.map((blog) => (
-        <Blog key={blog.id} title={blog.title} img={blog.img} />
+        <Blog key={blog} title={blog} img={blog} id={blog} />
       ))}
     </div>
   );

@@ -3,9 +3,10 @@ import "./blog.css";
 interface Blogprops {
   title: string;
   img: string;
+  id: string;
 }
 
-const Blog: React.FC<Blogprops> = ({ title, img }) => {
+const Blog: React.FC<Blogprops> = ({ title, img, id }) => {
   return (
     <div className='blog'>
       <div className='blog-img'>
@@ -19,7 +20,10 @@ const Blog: React.FC<Blogprops> = ({ title, img }) => {
             Distinctio, et?...
           </p>
         </div>
-        <button type='button'>Read More</button>
+        <button type='button'>
+          <a href={`/post/${id}`}></a>
+          Read More
+        </button>
       </div>
     </div>
   );

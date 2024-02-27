@@ -1,9 +1,5 @@
-import { useState } from "react";
-import {
-  FaArrowAltCircleRight,
-  FaArrowAltCircleLeft,
-  FaDollarSign,
-} from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import "./header.css";
 import image1 from "../../assets/Screenshot1.png";
 import image2 from "../../assets/Screenshot2.png";
@@ -25,6 +21,10 @@ const Header = () => {
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 6000);
+    return () => clearInterval(interval);
+  });
   return (
     <div className='carousel'>
       <button className='carousel-control prev' onClick={prevSlide}>
@@ -39,10 +39,14 @@ const Header = () => {
               alt={`Slide ${index}`}
               className={index === currentIndex ? "active" : "inactive"}
             />
-            <FaDollarSign style={{ color: "black" }} />
           </>
         ))}
       </div>
+      {/* <div className="dots">
+        {images.map((_, index)=>(
+          <span key={index} className={index === currentIndex ? "dot active" : "dot"}></span>
+        ))}
+      </div> */}
       <button className='carousel-control next' onClick={nextSlide}>
         <FaArrowAltCircleRight size={24} style={{ color: "black" }} />
       </button>

@@ -1,0 +1,7 @@
+.publishContainer {
+  padding: 10px;
+}
+.publishContainerForm {
+  display: flex;
+  flex-direction: column;
+}

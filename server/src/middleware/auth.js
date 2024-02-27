@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-export const generateAccessToken = (user) => {
+const generateAccessToken = (user) => {
   const options = {
     expiresIn: "30m",
     algorithm: "HS256",
@@ -8,7 +8,7 @@ export const generateAccessToken = (user) => {
   return jwt.sign(user, process.env.ACCESS_TOKEN, options);
 };
 
-export const authenticateToken = (req, res, next) => {
+const authenticateToken = (req, res, next) => {
   const authHeader = req.authHeader;
   const token = authHeader && authHeader.split(" ")[1];
   if (!token) res.status(401).json({ message: "Unauthorized - Missing token" });
@@ -22,4 +22,9 @@ export const authenticateToken = (req, res, next) => {
     req.user = user;
     next();
   });
+};
+
+module.exports = {
+  generateAccessToken,
+  authenticateToken,
 };

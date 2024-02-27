@@ -1,15 +1,15 @@
 const { PrismaClient } = require("@prisma/client");
 
-const userClient = PrismaClient();
+const userClient = new PrismaClient();
 
 const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
 
-import { generateAccessToken } from "../middleware/auth";
+const { generateAccessToken } = require("../middleware/auth");
 
 // create user
-export const createUser = async (req, res) => {
+const createUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -30,7 +30,7 @@ export const createUser = async (req, res) => {
   }
 };
 // Login
-export const login = async (req, res) => {
+const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -63,7 +63,7 @@ export const login = async (req, res) => {
   }
 };
 // refreshToken
-export const refreshToken = async (req, res) => {
+const refreshToken = async (req, res) => {
   const refreshToken = req.body.token;
   if (refreshToken == null)
     return res.status(401).json({ message: "Refresh token is required" });
@@ -83,7 +83,7 @@ export const refreshToken = async (req, res) => {
   }
 };
 // getAllUser
-export const getAllUser = async (req, res) => {
+const getAllUser = async (req, res) => {
   try {
     const allUser = await userClient.user.findMany({});
 
@@ -94,7 +94,7 @@ export const getAllUser = async (req, res) => {
   }
 };
 // updateUser
-export const updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   try {
     const { email, password, name } = req.body;
     const user = await userClient.user.create({
@@ -111,7 +111,7 @@ export const updateUser = async (req, res) => {
   }
 };
 // create post
-export const createPost = async (req, res) => {
+const createPost = async (req, res) => {
   try {
     const { title, content } = req.body;
     const post = await userClient.post.create({
@@ -127,7 +127,7 @@ export const createPost = async (req, res) => {
   }
 };
 // get all post
-export const getAllPost = async (req, res) => {
+const getAllPost = async (req, res) => {
   try {
     const posts = await userClient.post.findMany({});
     res.status(200).json([posts]);
@@ -137,7 +137,7 @@ export const getAllPost = async (req, res) => {
   }
 };
 // get post by id
-export const getPostById = async (req, res) => {
+const getPostById = async (req, res) => {
   try {
     const { id } = req.body;
     const post = await userClient.post.findUnique({
@@ -151,8 +151,23 @@ export const getPostById = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+//updatePost
+const updatePost = async (req, res) => {
+  const { id } = req.params;
+  const { img, title, content } = req.body;
+  const post = await userClient.post({
+    where: {
+      id: id,
+    },
+    data: {
+      img: img,
+      title: title,
+      content: content,
+    },
+  });
+};
 // delete post
-export const deletePost = async (req, res) => {
+const deletePost = async (req, res) => {
   try {
     const { id } = req.body;
     const post = await userClient.user.delete({
@@ -165,4 +180,16 @@ export const deletePost = async (req, res) => {
     console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
+};
+
+module.exports = {
+  createUser,
+  login,
+  refreshToken,
+  getAllUser,
+  updateUser,
+  getAllPost,
+  createPost,
+  getPostById,
+  deletePost,
 };
